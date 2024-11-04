@@ -1,0 +1,14 @@
+# Ignorar archivos de configuración y secretos
+.env
+
+# Ignorar configuraciones específicas de Expo
+# .expo/
+
+# Ignorar dependencias de Node.js
+node_modules/
+
+# Ignorar el archivo de bloqueo de dependencias
+# package-lock.json
+
+# Ignorar configuraciones de bundler
+# babel.config.js
