@@ -3,7 +3,7 @@ import { Button, Text, View, StyleSheet, TouchableOpacity, Image, TextInput } fr
 import * as WebBrowser from 'expo-web-browser';
 import { makeRedirectUri, useAuthRequest } from 'expo-auth-session';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { DISCORD_CLIENT_ID, DISCORD_CLIENT_SECRET } from '@env';
+import { CLIENT_ID, CLIENT_SECRET } from '@env';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 WebBrowser.maybeCompleteAuthSession();
@@ -19,13 +19,13 @@ export default function App() {
   const [password, setPassword] = useState('');
 
   const redirectUri = makeRedirectUri({
-    scheme: 'discordauthapp',
+    scheme: 'authleiber',
     useProxy: true,
   });
 
   const [request, response, promptAsync] = useAuthRequest(
     {
-      clientId: DISCORD_CLIENT_ID,
+      clientId: CLIENT_ID,
       scopes: ['identify'],
       redirectUri,
       usePKCE: true,
@@ -41,8 +41,8 @@ export default function App() {
           'Content-Type': 'application/x-www-form-urlencoded',
         },
         body: new URLSearchParams({
-          client_id: DISCORD_CLIENT_ID,
-          client_secret: DISCORD_CLIENT_SECRET,
+          client_id: CLIENT_ID,
+          client_secret: CLIENT_SECRET,
           grant_type: 'authorization_code',
           code,
           redirect_uri: redirectUri,
